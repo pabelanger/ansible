@@ -1,0 +1,5 @@
+- project:
+    name: gtest-org/ansible
+    check:
+      jobs:
+        - tox-pep8

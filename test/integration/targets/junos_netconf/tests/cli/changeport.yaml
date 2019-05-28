@@ -28,8 +28,11 @@
       - "result.changed == false"
 
 - name: wait for netconf server to come up
-  pause:
-    seconds: 10
+  delegate_to: localhost
+  wait_for:
+    host: "{{ hostvars[item].ansible_host }}"
+    port: 8022
+  with_inventory_hostnames: junos
 
 - name: Ensure we can communicate over 8022
   include: "{{ role_path }}/tests/utils/junos_command.yaml ansible_connection=netconf ansible_port=8022 is_ignore_errors=false"

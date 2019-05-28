@@ -8,6 +8,6 @@
   tags: netconf
 
 - name: wait for netconf server to come up
-  pause:
-    seconds: 10
-  tags: netconf
+  wait_for:
+    host: "{{ inventory_hostname }}"
+    port: 830

@@ -19,8 +19,10 @@
 ###################################
 
 - name: wait for netconf server to come up
-  pause:
-    seconds: 10
+  delegate_to: localhost
+  wait_for:
+    host: "{{ inventory_hostname }}"
+    port: 830
 
 - name: Ensure we can communicate over netconf
   include: "{{ role_path }}/tests/utils/junos_command.yaml ansible_connection=netconf ansible_port=830 is_ignore_errors=false"

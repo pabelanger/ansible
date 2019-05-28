@@ -28,8 +28,8 @@
       - "result.changed == false"
 
 - name: wait for netconf server to come up
-  pause:
-    seconds: 10
+  wait_for:
+    port: 8022
 
 - name: Ensure we can communicate over 8022
   include: "{{ role_path }}/tests/utils/junos_command.yaml ansible_connection=netconf ansible_port=8022 is_ignore_errors=false"

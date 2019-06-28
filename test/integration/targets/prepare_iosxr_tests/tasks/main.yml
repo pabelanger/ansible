@@ -1,8 +1,14 @@
 ---
-- name: Ensure we have loopback 888 for testing
-  iosxr_config:
-    src: config.j2
-  connection: network_cli
+- block:
+    - name: Ensure we have loopback 888 for testing
+      iosxr_config:
+        src: config.j2
+      connection: network_cli
+  rescue:
+    - name: Ensure we have loopback 888 for testing
+      iosxr_config:
+        src: config.j2
+      connection: network_cli
 
 - name: Enable Netconf service
   iosxr_netconf:

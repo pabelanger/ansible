@@ -290,6 +290,7 @@ def get_collection_role_path(role_name, collection_list=None):
 
             # get_data input must be a native string
             tasks_file = pkgutil.get_data(to_native(role_package) + '.tasks', 'main.yml')
+                or pkgutil.get_data(to_native(role_package) + '.tasks', 'main.yaml')
 
             if tasks_file is not None:
                 # the package is now loaded, get the collection's package and ask where it lives

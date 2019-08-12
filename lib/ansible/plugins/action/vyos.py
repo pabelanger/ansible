@@ -38,7 +38,7 @@ class ActionModule(ActionNetworkModule):
     def run(self, tmp=None, task_vars=None):
         del tmp  # tmp no longer has any effect
 
-        self._config_module = True if self._task.action == 'vyos_config' else False
+        self._config_module = True if 'vyos_config' in self._task.action else False
         socket_path = None
 
         if self._play_context.connection == 'network_cli':

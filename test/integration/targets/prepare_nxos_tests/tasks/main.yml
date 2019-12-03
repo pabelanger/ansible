@@ -1,4 +1,5 @@
 ---
+
 - name: Enable Feature Privilege
   nxos_config:
     lines:

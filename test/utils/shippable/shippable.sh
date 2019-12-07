@@ -2,6 +2,8 @@
 
 set -o pipefail -eux
 
+
+
 declare -a args
 IFS='/:' read -ra args <<< "$1"
 
@@ -19,6 +21,7 @@ done
 
 docker ps
 
+ls -la /home/shippable
 if [ -d /home/shippable/cache/ ]; then
     ls -la /home/shippable/cache/
 fi

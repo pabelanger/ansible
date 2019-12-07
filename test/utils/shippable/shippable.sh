@@ -2,6 +2,8 @@
 
 set -o pipefail -eux
 
+
+
 declare -a args
 IFS='/:' read -ra args <<< "$1"
 
@@ -18,7 +20,8 @@ for container in $(docker ps --format '{{.Image}} {{.ID}}' | grep -v '^drydock/'
 done
 
 docker ps
-
+ls -la / 
+ls -la /build/
 if [ -d /home/shippable/cache/ ]; then
     ls -la /home/shippable/cache/
 fi
